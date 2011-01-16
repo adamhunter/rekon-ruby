@@ -12,3 +12,6 @@
 * List Keys
 * Pretty print object
 * add http authentication
+
+#### Goals
+Provide better visibly into riak nodes individually and as a cluster. 

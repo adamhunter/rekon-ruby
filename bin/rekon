@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+
+begin 
+  require 'bundler'
+rescue LoadError => e
+  require 'rubygems'
+  require 'bundler'
+end
+
+Bundler.setup
+
+require 'rekon/server'
+
+# begin
+#   require 'rekon/server'
+# rescue LoadError => e
+#   require 'rubygems'
+#   require 'rekon/server'
+# end
+
+# %x[open 'http://0.0.0.0:8090']
+# require 'irb'; IRB.start
+Rekon::Server.run! :host => '0.0.0.0', :port => 8090

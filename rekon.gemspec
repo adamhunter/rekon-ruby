@@ -13,8 +13,16 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "rekon"
+  
+  # s.add_dependency "ripple",    "~> 0.8.3"
+  s.add_dependency "sinatra",   "~> 1.1.2"
+  s.add_dependency "haml",      "~> 3.0.25"
+  s.add_dependency "yajl-ruby", "~> 0.7.9"
+  s.add_dependency "excon",     "~> 0.4.0"
 
   s.add_development_dependency "bundler", ">= 1.0.0"
+  s.add_development_dependency "rspec",   ">= 2.4.0"
+  s.add_development_dependency "shotgun", ">= 0.8.0"
 
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact

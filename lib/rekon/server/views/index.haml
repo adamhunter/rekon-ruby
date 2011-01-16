@@ -1,0 +1,9 @@
+Welcome to Rekon
+
+= @installed.inspect
+
+Hosts
+%ul
+  - @settings.hosts.each do |host|
+    %li
+      %a{:href => "nodes/#{host}"}= host

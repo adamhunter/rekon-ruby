@@ -1,0 +1,12 @@
+%h1 Node #{@node.name}
+
+- unless @buckets.blank?
+  %ul
+    - @buckets.each do |bucket|
+      %li
+        %a{:href => "/nodes/#{@node.name}/#{bucket}"}= bucket
+  
+- else
+  There are no buckets in #{@node.name}
+  
+%a{:href => "/nodes/#{@node.name}/reload-buckets"} Reload buckets

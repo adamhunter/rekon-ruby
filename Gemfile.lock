@@ -1,15 +1,64 @@
+GIT
+  remote: git://github.com/adamhunter/ripple.git
+  revision: 74dcffabc753c2fddf8b8cc9fad390e6f2c0f1b1
+  specs:
+    riak-client (0.9.0.beta)
+      builder (~> 2.1.2)
+      i18n (>= 0.4.0)
+    ripple (0.9.0.beta)
+      activemodel (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      riak-client (~> 0.9.0.beta)
+
 PATH
   remote: .
   specs:
     rekon (0.0.1)
+      excon (~> 0.4.0)
+      haml (~> 3.0.25)
+      sinatra (~> 1.1.2)
+      yajl-ruby (~> 0.7.9)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    activemodel (3.0.3)
+      activesupport (= 3.0.3)
+      builder (~> 2.1.2)
+      i18n (~> 0.4)
+    activesupport (3.0.3)
+    builder (2.1.2)
+    diff-lcs (1.1.2)
+    excon (0.4.0)
+    haml (3.0.25)
+    i18n (0.5.0)
+    rack (1.2.1)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.4.0)
+    shotgun (0.8)
+      rack (>= 1.0)
+    sinatra (1.1.2)
+      rack (~> 1.1)
+      tilt (~> 1.2)
+    tilt (1.2.1)
+    yajl-ruby (0.7.9)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (>= 1.0.0)
+  excon (~> 0.4.0)
+  haml (~> 3.0.25)
   rekon!
+  ripple!
+  rspec (>= 2.4.0)
+  shotgun (>= 0.8.0)
+  sinatra (~> 1.1.2)
+  yajl-ruby (~> 0.7.9)

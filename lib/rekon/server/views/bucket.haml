@@ -1,0 +1,10 @@
+%h1 Bucket #{@bucket.name} in #{@node.name}
+
+- unless @keys.blank?
+  %ul
+    - @keys.each do |key|
+      %li
+        %a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{key}"}= key
+  
+- else
+  This bucket is empty.
