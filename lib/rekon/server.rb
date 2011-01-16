@@ -50,6 +50,11 @@ module Rekon
       haml :key
     end
     
+    get '/stats' do
+      @stats = Ripple.client.http.stats
+      haml :stats
+    end
+    
     get '/uninstall' do
       Rekon::App::Installer::uninstall!
       'done'
