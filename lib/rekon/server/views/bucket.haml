@@ -25,11 +25,15 @@
             = destroy_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}")
   
 - else
-  This bucket is empty.
+  %p
+    This bucket doesn't technically exist yet.  Buckets come into existence only
+    once they have had a key stored "inside" them.  Add a key to persist this bucket.
+  
 
 %form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}"}
   %label{:for => 'new_key'} New Key
   %input#new_key{:type => 'text', :name => 'key'}
   %button{:type => 'submit'} Add
+  %em.hint Leave it blank to let riak pick
   
 %a{:href => "/nodes/#{@node.name}"} Back to #{@node.name}

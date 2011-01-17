@@ -142,6 +142,11 @@ label[for=edit_key] {
   width:650px;
 }
 
+em.hint {
+  color:#999;
+  font-style:italic;
+}
+
 /* clearfix */
 .clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
 .clearfix{display:inline-block;}
