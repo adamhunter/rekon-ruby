@@ -90,7 +90,7 @@ module Rekon
     get '/nodes/:host/:bucket' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @keys    = @bucket.keys
       haml :bucket
     end
@@ -98,7 +98,7 @@ module Rekon
     get '/nodes/:host/:bucket/:key' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @robject = @bucket.get(params[:key])
       haml :key
     end
@@ -106,7 +106,7 @@ module Rekon
     get '/nodes/:host/:bucket/:key/edit' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @robject = @bucket.get(params[:key])
       haml :key_edit
     end
@@ -114,7 +114,7 @@ module Rekon
     post '/nodes/:host/:bucket' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @key     = params[:key]
       
       halt 422, 'Key already exists' if params[:key].present? && @bucket.exists?(params[:key])
@@ -129,7 +129,7 @@ module Rekon
     put '/nodes/:host/:bucket/:key' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @robject = @bucket.get(params[:key])
       @robject.raw_data = JSON.parse(params[:value]).to_json
       @robject.store
@@ -139,7 +139,7 @@ module Rekon
     delete '/nodes/:host/:bucket/:key' do
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
-      @bucket  = Riak::Bucket.new(Ripple.client, params[:bucket])
+      @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @bucket.delete(params[:key])
       redirect "/nodes/#{@host}/#{@bucket.name}"
     end

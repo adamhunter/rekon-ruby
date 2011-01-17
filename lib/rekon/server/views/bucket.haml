@@ -26,8 +26,10 @@
   
 - else
   %p
-    This bucket doesn't technically exist yet.  Buckets come into existence only
-    once they have had a key stored "inside" them.  Add a key to persist this bucket.
+    This bucket doesn't technically exist.  Buckets come into existence only
+    once they have had a key stored "inside" them.
+  %p
+    Add a key to persist this bucket.
   
 
 %form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}"}
