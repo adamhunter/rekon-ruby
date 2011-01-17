@@ -28,6 +28,16 @@ module Rekon
       settings.save
       Rekon::Data::Settings.clear_nodes
     end
+    
+    def self.add_bucket(host, bucket)
+      raise ArgumentError.new("host and bucket must be provided") if host.blank? || bucket.blank?
+      node   = Rekon::Data::Nodes.find!(host)
+      node.buckets << bucket
+      node.buckets.uniq!
+      Rekon::Data::Settings.clear_nodes
+      node.save
+      bucket = Riak::Bucket.new(node.client, bucket)
+    end
 
   end
 end

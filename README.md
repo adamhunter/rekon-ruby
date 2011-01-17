@@ -18,6 +18,7 @@ riak to release a list buckets feature, which is here in 0.14.
 * List Keys
 * Pretty print object
 * add http authentication
+* allow editing of per bucket parameters
 
 ### Goals
 Provide better visibly into riak nodes individually and as a cluster. 

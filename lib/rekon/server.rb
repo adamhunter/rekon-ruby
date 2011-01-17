@@ -35,6 +35,7 @@ module Rekon
     end
     
     get '/nodes' do
+      Rekon::Data::Settings.clear_nodes
       @nodes = Rekon::Data::Settings.nodes
       haml :nodes
     end
@@ -47,6 +48,11 @@ module Rekon
     delete '/nodes/:host' do
       Rekon::App.remove_node(params[:host])
       redirect '/nodes'
+    end
+    
+    post '/nodes/:host' do
+      @bucket = Rekon::App.add_bucket(params[:host], params[:bucket])
+      redirect "/nodes/#{params[:host]}/#{@bucket.name}"
     end
     
     get '/nodes/:host' do
@@ -67,7 +73,11 @@ module Rekon
     get '/nodes/:host/stats' do
       @host  = params[:host]
       @node  = Rekon::Data::Nodes.find!(@host)
-      @stats = @node.stats
+      begin
+        @stats = @node.stats
+      rescue => e
+        return "Error Fetching Stats. #{e.message}"
+      end
       haml :stats
     end
     

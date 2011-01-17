@@ -22,4 +22,9 @@
 - else
   There are no buckets in #{@node.name}
   
+%form{:action => "/nodes/#{@node.name}", :method => 'post'}
+  %label{:for => 'new_bucket'} New Bucket
+  %input#new_bucket{:type => 'text', :name => 'bucket'}
+  %button{:type => 'submit'} Add
+
 %a{:href => "/nodes/#{@node.name}/reload-buckets"} Reload buckets

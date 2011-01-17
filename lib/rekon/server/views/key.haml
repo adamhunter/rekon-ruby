@@ -32,3 +32,4 @@
 
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Back
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit
+%a{:href => "http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}", :target => '_blank'} Riak
