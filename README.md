@@ -2,6 +2,7 @@
 ## Scout into your riak cluster
 
 ### About
+Pronounced |ˈrēˌkän; riˈkän| (like recon)
 
 Rekon is a data visualization utility inspired by Briak.  I have been waiting for
 riak to release a list buckets feature, which is here in 0.14. 
@@ -9,14 +10,8 @@ riak to release a list buckets feature, which is here in 0.14.
 
 ### To Do:
 * Get riak in memory test harness setup.
-* Setup sinatra app base
-* Setup command line util for booting web server
 * Test connection to primary configured riak server
 * First run install into datastore
-* Allow adding multiple nodes
-* Sync Buckets
-* List Keys
-* Pretty print object
 * add http authentication
 * allow editing of per bucket parameters
 
