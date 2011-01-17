@@ -28,6 +28,7 @@ abbr,acronym{border:0;}
 
 table {
   font-size:1em;
+  margin-top:10px;
 }
 
 table th {
@@ -42,6 +43,9 @@ table th, table td {
   border:1px solid #ccc;
 }
 
+#bucket-props {
+  overflow-x:scroll;
+}
 
 /* Typography and Colors */
 body {

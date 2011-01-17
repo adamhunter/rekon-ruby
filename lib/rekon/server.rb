@@ -92,6 +92,7 @@ module Rekon
       @node    = Rekon::Data::Nodes.find!(@host)
       @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @keys    = @bucket.keys
+      @props   = @bucket.props.with_indifferent_access
       haml :bucket
     end
     

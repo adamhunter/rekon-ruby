@@ -1,5 +1,58 @@
 %h1 Bucket &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}</em>
 
+#bucket-props
+  %table
+    %thead
+      %tr
+        %th{:colspan => 6}
+        %th Last
+        %th Allow
+        %th{:colspan => 2} Linkfun
+        %th{:colspan => 2} Chash Keyfun
+        %th{:colspan => 4} VClock
+      %tr
+        %th Name
+        %th W
+        %th R
+        %th RW
+        %th DW
+        %th N Val
+        %th Write Wins
+        %th Multi
+        %th Mod
+        %th Fun
+        %th Mod
+        %th Fun
+        %th Small
+        %th Big
+        %th Young
+        %th Old
+    %tbody
+      %tr
+        %td= @props[:name]
+        %td= @props[:w]
+        %td= @props[:r]
+        %td= @props[:rw]
+        %td= @props[:dw]
+        %td= @props[:n_val]
+        %td= @props[:last_write_wins]
+        %td= @props[:allow_mult]
+        %td= @props[:linkfun][:mod]
+        %td= @props[:linkfun][:fun]
+        %td= @props[:chash_keyfun][:mod]
+        %td= @props[:chash_keyfun][:fun]
+        %td= @props[:small_vclock]
+        %td= @props[:big_vclock]
+        %td= @props[:young_vclock]
+        %td= @props[:old_vclock]
+      
+%p
+  %b Pre Commit
+  = @props[:precommit].blank? ? 'None' : @props[:precommit].to_sentence
+%p
+  %b Post Commit
+  = @props[:postcommit].blank? ? 'None' : @props[:postcommit].to_sentence
+
 - unless @keys.blank?
   - @keys.sort!
   %table 
