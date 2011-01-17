@@ -27,4 +27,6 @@
   %input#new_bucket{:type => 'text', :name => 'bucket'}
   %button{:type => 'submit'} Add
 
-%a{:href => "/nodes/#{@node.name}/reload-buckets"} Reload buckets
+%p.help
+  To delete a bucket, you must remove all of it's keys.  Then 
+  <a href="/nodes/#{@node.name}/reload-buckets">reload buckets</a>.

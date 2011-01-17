@@ -19,5 +19,5 @@ riak to release a list buckets feature, which is here in 0.14.
 Provide better visibly into riak nodes individually and as a cluster. 
 
 ### Credits
-Ripple by Sean Cribbs
-Icons by http://p.yusukekamiyamane.com/
+* Ripple by Sean Cribbs
+* Icons by http://p.yusukekamiyamane.com/
