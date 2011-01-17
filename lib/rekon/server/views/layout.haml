@@ -1,7 +1,16 @@
 %html
   %head
     %title Rekon
+    %link{:rel => 'stylesheet', :href => '/screen.css', :type => 'text/css', :media => 'screen, projection'}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", :type => "text/javascript"}
     
   %body
     #container
-      = yield
+      #home
+        %a{:href => '/nodes'} Rekon v#{Rekon::VERSION}
+        
+      #content  
+        = yield
+      
+  
+    %script{:type => 'text/javascript', :src => '/app.js'}

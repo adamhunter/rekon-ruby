@@ -1,10 +1,35 @@
-%h1 Bucket #{@bucket.name} in #{@node.name}
+%h1 Bucket &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}</em>
 
 - unless @keys.blank?
-  %ul
-    - @keys.each do |key|
-      %li
-        %a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{key}"}= key
+  - @keys.sort!
+  %table 
+    %thead
+      %tr
+        %th
+        %th View
+        %th Riak
+        %th Edit
+        %th Delete
+    %tbody
+      - @keys.each do |key|
+        %tr
+          %th
+            <em>http://#{@node.name}/riak/#{@bucket.name}/</em>#{key}
+          %td
+            = view_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}")
+          %td
+            = view_in_riak("http://#{@node.name}/riak/#{@bucket.name}/#{key}")
+          %td
+            = edit_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}/edit")
+          %td
+            = destroy_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}")
   
 - else
   This bucket is empty.
+
+%form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}"}
+  %label{:for => 'new_key'} Add Key
+  %input#new_key{:type => 'text', :name => 'key'}
+  %button{:type => 'submit'} Add
+  
+%a{:href => "/nodes/#{@node.name}"} Back to #{@node.name}

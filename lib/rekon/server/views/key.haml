@@ -1,5 +1,34 @@
-%h1 Key #{@robject.key}
+%h1 Key &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}</em>
 
-%code
-  = @robject.data.inspect
+%table
+  %tbody
+    %tr
+      %th Content Type
+      %td= @robject.content_type
+    %tr
+      %th VClock
+      %td= @robject.vclock.truncate(100)
+    %tr
+      %th ETag
+      %td= @robject.etag
+    %tr
+      %th Last Modified
+      %td= @robject.last_modified
+    %tr
+      %th Links
+      %td= h @robject.links.inspect
+    %tr
+      %th Meta
+      %td= h @robject.meta.inspect
 
+%h3 Content
+
+- if @robject.content_type == 'application/json'
+  %pre
+    = JSON.pretty_generate(@robject.data)
+    
+- else
+  = @robject.data
+
+%a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Back
+%a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit

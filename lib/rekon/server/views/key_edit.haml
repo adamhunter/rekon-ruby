@@ -1,0 +1,9 @@
+%h1 Edit Key &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}</em>
+
+%form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}/#{@robject.key}"}
+  = method_put
+  %label{:for => 'edit_key'}= "<em>Key</em> #{@robject.key}"
+  %textarea{:id => 'edit_key', :name => 'value'}= JSON.pretty_generate(@robject.data)
+  %button Update
+
+%a{:href => "/nodes/#{@host}/#{@bucket.name}"} Back to #{@bucket.name}

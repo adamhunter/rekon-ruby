@@ -14,7 +14,6 @@ module Rekon
         nodes = settings.hosts.map do |host|
           node = Rekon::Data::Nodes.new
           node.key = host
-          node.sync_buckets
           node
         end
         nodes.map(&:save!)
@@ -27,7 +26,7 @@ module Rekon
       end
       
       def self.uninstall!
-        Rekon::Data::Settings.load.destroy
+        Rekon::Data::Settings.destroy
         Rekon::Data::Settings.nodes.map(&:destroy)
         true
       end

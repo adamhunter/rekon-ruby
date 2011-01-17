@@ -1,0 +1,31 @@
+%h1 <em>Rekon</em> &ndash; Reporting for Duty
+
+%p.explain
+  These are the nodes Rekon is assigned to watch. Reloading this page will cause Rekon to ping all of your Riak nodes.
+
+%table
+  %thead
+    %tr
+      %th
+      %th Host
+      %th Buckets
+      %th Stats
+      %th Delete
+  %tbody
+    - @nodes.each do |node|
+      %tr
+        %td
+          =# node_status_image(node)
+          = pending_spinner('ping', "data-ping-node=#{node.name}")
+        %td= node.name
+        %td
+          = buckets_in_rekon(node)
+        %td
+          = stats_in_rekon(node)
+        %td
+          = destroy_in_rekon("/nodes/#{node.name}")
+          
+%form#new_node{:action => '/nodes', :method => 'post'}
+  %label{:for => 'node_name'} New Node
+  %input#node_name{:type => 'text', :name => 'node[name]'}
+  %button{:type => 'submit'} Add

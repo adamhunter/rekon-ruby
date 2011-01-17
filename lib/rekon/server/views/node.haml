@@ -1,10 +1,23 @@
-%h1 Node #{@node.name}
+%h1 Node &ndash; <em>http://#{@node.name}</em>
 
 - unless @buckets.blank?
-  %ul
-    - @buckets.each do |bucket|
-      %li
-        %a{:href => "/nodes/#{@node.name}/#{bucket}"}= bucket
+  - @buckets.sort!
+  %table
+    %thead
+      %tr
+        %th
+        %th View
+        %th Riak
+    %tbody
+      - @buckets.each do |bucket|
+        %tr
+          %th
+            <em>http://#{@node.name}/riak/</em>#{bucket}
+          %td
+            = view_in_rekon("/nodes/#{@node.name}/#{bucket}")
+          %td
+            = view_in_riak("http://#{@node.name}/riak/#{bucket}")
+      
   
 - else
   There are no buckets in #{@node.name}
