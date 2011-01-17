@@ -13,7 +13,11 @@ riak to release a list buckets feature, which is here in 0.14.
 * Test connection to primary configured riak server
 * First run install into datastore
 * add http authentication
-* allow editing of per bucket parameters
+* editing of per bucket parameters
+* setting key content type
+* editing links between keys
+* syntax highlight json 
+
 
 ### Goals
 Provide better visibility into riak nodes individually and as a cluster. 
