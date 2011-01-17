@@ -17,6 +17,7 @@ riak to release a list buckets feature, which is here in 0.14.
 * setting key content type
 * editing links between keys
 * syntax highlight json 
+* add help links to basho wiki for stats and bucket properties
 
 
 ### Goals

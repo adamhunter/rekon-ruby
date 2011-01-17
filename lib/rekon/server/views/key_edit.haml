@@ -4,6 +4,8 @@
   = method_put
   %label{:for => 'edit_key'}= "<em>Key</em> #{@robject.key}"
   %textarea{:id => 'edit_key', :name => 'value'}= JSON.pretty_generate(@robject.data)
+  %p
+    This feature is currently experimental.
   %button Update
 
 %a{:href => "/nodes/#{@host}/#{@bucket.name}"} Back to #{@bucket.name}

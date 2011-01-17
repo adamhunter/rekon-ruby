@@ -52,9 +52,7 @@
   %table
     %thead
       %tr
-        %th{:colspan => 6}
-        %th Last
-        %th Allow
+        %th{:colspan => 8}
         %th{:colspan => 2} Linkfun
         %th{:colspan => 2} Chash Keyfun
         %th{:colspan => 4} VClock
@@ -65,8 +63,8 @@
         %th RW
         %th DW
         %th N Val
-        %th Write Wins
-        %th Multi
+        %th Allow Multi
+        %th Last Write
         %th Mod
         %th Fun
         %th Mod
@@ -83,8 +81,8 @@
         %td= @props[:rw]
         %td= @props[:dw]
         %td= @props[:n_val]
-        %td= @props[:last_write_wins]
         %td= @props[:allow_mult]
+        %td= @props[:last_write_wins]
         %td= @props[:linkfun][:mod]
         %td= @props[:linkfun][:fun]
         %td= @props[:chash_keyfun][:mod]

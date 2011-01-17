@@ -28,7 +28,8 @@
     = JSON.pretty_generate(@robject.data)
     
 - else
-  = @robject.data
+  %p
+    = @robject.data
 
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Back
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit
