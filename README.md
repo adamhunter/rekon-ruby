@@ -5,8 +5,12 @@
 Pronounced |ˈrēˌkän; riˈkän| (like recon)
 
 Rekon is a data visualization utility inspired by Briak.  I have been waiting for
-riak to release a list buckets feature, which is here in 0.14. 
-`http://127.0.0.1:8098/riak?buckets=true`
+basho to release a list buckets feature, which is here in 0.14. 
+[`http://127.0.0.1:8098/riak?buckets=true`](http://127.0.0.1:8098/riak?buckets=true)
+
+Rekon will support earlier (though not well tested) versions of riak at current.  
+Nodes that do not have the ability to list their buckets will require buckets to
+be entered manually.
 
 ### To Do:
 * Get riak in memory test harness setup.
@@ -23,6 +27,19 @@ riak to release a list buckets feature, which is here in 0.14.
 ### Goals
 Provide better visibility into riak nodes individually and as a cluster. 
 
+### Prerequisites
+1. A riak node to install on (to keep track of settings and cache buckets).
+
+### Recommended
+DejaVu Sans Mono font [http://dejavu-fonts.org/wiki/Main_Page](http://dejavu-fonts.org/wiki/Main_Page)
+
+### Installation
+`gem install rekon`
+
+### Usage
+`rekon` or `rekon path\to\ripple.yml`
+
 ### Credits
 * Ripple by Sean Cribbs
-* Icons by http://p.yusukekamiyamane.com/
+* Briak by John Lynch
+* Icons by [http://p.yusukekamiyamane.com/](http://p.yusukekamiyamane.com/)

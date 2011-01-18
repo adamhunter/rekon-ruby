@@ -86,8 +86,9 @@ table tbody tr:hover th, table tbody tr:hover td {
 }
 
 pre, code {
-  font-family: 'DejaVuSans Mono', Monaco, 'Courier New';
+  font-family: 'DejaVu Sans Mono', Monaco, 'Courier New';
   line-height:1.6em;
+  font-size:0.9em;
 }
 
 p {
@@ -142,6 +143,9 @@ label[for=edit_key] {
 }
 
 #edit_key {
+  font-family: 'DejaVu Sans Mono', Monaco, 'Courier New';
+  line-height:1.6em;
+  font-size:0.9em;
   height:400px;
   width:650px;
 }

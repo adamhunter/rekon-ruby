@@ -5,5 +5,6 @@
     - @stats.each_pair do |key, value|
       %tr
         %th= key
-        %td= String === value ? value : value.inspect
+        %td
+          %code= String === value ? value : value.inspect
 
