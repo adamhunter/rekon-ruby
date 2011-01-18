@@ -1,25 +1,6 @@
 %h1 Key &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}</em>
 
-%table.wide
-  %tbody
-    %tr
-      %th Content Type
-      %td= @robject.content_type
-    %tr
-      %th VClock
-      %td= @robject.vclock.truncate(100)
-    %tr
-      %th ETag
-      %td= @robject.etag
-    %tr
-      %th Last Modified
-      %td= @robject.last_modified
-    %tr
-      %th Links
-      %td= h @robject.links.inspect
-    %tr
-      %th Meta
-      %td= h @robject.meta.inspect
+= haml :_key_meta
 
 #key
   - if @robject.content_type == 'application/json'
@@ -28,6 +9,14 @@
   - else
     %pre~ format_output_value(@robject.data, @robject.content_type)
 
-%a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Back
-%a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit
-%a{:href => "http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}", :target => '_blank'} Riak
+%ul#footer-navi
+  %li
+    %a{:href => "/nodes"} Nodes
+  %li
+    %a{:href => "/nodes/#{@node.name}"} Buckets
+  %li
+    %a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Keys
+  %li
+    %a.action{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit
+  %li
+    %a.action{:href => "http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}", :target => '_blank'} Riak

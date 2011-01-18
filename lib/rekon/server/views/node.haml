@@ -1,14 +1,14 @@
 %h1 Node &ndash; <em>http://#{@node.name}</em>
 
-- unless @buckets.blank?
-  - @buckets.sort!
-  %table
-    %thead
-      %tr
-        %th
-        %th View
-        %th Riak
-    %tbody
+%table
+  %thead
+    %tr
+      %th
+      %th View
+      %th Riak
+  %tbody
+    - unless @buckets.blank?
+      - @buckets.sort!
       - @buckets.each do |bucket|
         %tr
           %th
@@ -17,16 +17,30 @@
             = view_in_rekon("/nodes/#{@node.name}/#{bucket}")
           %td
             = view_in_riak("http://#{@node.name}/riak/#{bucket}")
+    - else
+      %tr
+        %td.no-results{:colspan => 3}
+          %p
+            There are no buckets in #{@node.name}.
+            %br
+            %br
+            Add one below.
+  %tfoot
+    %tr
+      %td{:colspan => 3}
+        %form{:action => "/nodes/#{@node.name}", :method => 'post'}
+          %label{:for => 'new_bucket'} New Bucket
+          %input#new_bucket{:type => 'text', :name => 'bucket'}
+          %button{:type => 'submit'} Add
       
   
-- else
-  There are no buckets in #{@node.name}
-  
-%form{:action => "/nodes/#{@node.name}", :method => 'post'}
-  %label{:for => 'new_bucket'} New Bucket
-  %input#new_bucket{:type => 'text', :name => 'bucket'}
-  %button{:type => 'submit'} Add
-
+%br
 %p.help
   To delete a bucket, you must remove all of its keys.  Then 
   <a href="/nodes/#{@node.name}/reload-buckets">reload buckets</a>.
+  
+%ul#footer-navi
+  %li
+    %a{:href => "/nodes"} Nodes
+  %li
+    %a.action{:href => "/nodes/#{@node.name}/reload-buckets"} Reload Buckets

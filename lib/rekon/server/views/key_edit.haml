@@ -2,16 +2,22 @@
 
 %form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}/#{@robject.key}"}
   = method_put
-  %label{:for => 'content_type'} Content Type
-  %select#content_type{:name => 'content_type'}
-    = content_type_options.each do |option|
-      %option{select_options(@robject.content_type, :value => option)}
-        = option
   
-  %label{:for => 'edit_key'}= "<em>Key</em> #{@robject.key}"
+  = haml :_key_meta
+  
   ~ %Q[<textarea id="edit_key" name="value">#{format_raw_value @robject}</textarea>]
-  %p
+  %p.warning
     This feature is currently experimental.
   %button Update
 
-%a{:href => "/nodes/#{@host}/#{@bucket.name}"} Back to #{@bucket.name}
+%ul#footer-navi
+  %li
+    %a{:href => "/nodes"} Nodes
+  %li
+    %a{:href => "/nodes/#{@node.name}"} Buckets
+  %li
+    %a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Keys
+  %li
+    %a.action{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}"} View
+  %li
+    %a.action{:href => "http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}", :target => '_blank'} Riak

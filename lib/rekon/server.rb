@@ -105,6 +105,7 @@ module Rekon
     end
     
     get '/nodes/:host/:bucket/:key/edit' do
+      @edit    = true
       @host    = params[:host]
       @node    = Rekon::Data::Nodes.find!(@host)
       @bucket  = Riak::Bucket.new(@node.client, params[:bucket])

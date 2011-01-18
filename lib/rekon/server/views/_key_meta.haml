@@ -1,0 +1,33 @@
+%table.wide
+  %tbody
+    %tr
+      %th Content Type
+      - if @edit
+        %td
+          %select#content_type{:name => 'content_type'}
+            = content_type_options.each do |option|
+              %option{select_options(@robject.content_type, :value => option)}
+                = option
+      - else
+        %td
+          %pre= @robject.content_type
+    %tr
+      %th VClock
+      %td
+        %pre= @robject.vclock.truncate(100)
+    %tr
+      %th ETag
+      %td
+        %pre= @robject.etag
+    %tr
+      %th Last Modified
+      %td
+        %pre= @robject.last_modified
+    %tr
+      %th Links
+      %td
+        %pre= h @robject.links.inspect
+    %tr
+      %th Meta
+      %td
+        %pre= h @robject.meta.inspect

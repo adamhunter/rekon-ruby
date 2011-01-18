@@ -1,16 +1,16 @@
 %h1 Bucket &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}</em>
 
-- unless @keys.blank?
-  - @keys.sort!
-  %table 
-    %thead
-      %tr
-        %th
-        %th View
-        %th Riak
-        %th Edit
-        %th Delete
-    %tbody
+%table 
+  %thead
+    %tr
+      %th
+      %th View
+      %th Riak
+      %th Edit
+      %th Delete
+  %tbody
+    - unless @keys.blank?
+      - @keys.sort!
       - @keys.each do |key|
         %tr
           %th
@@ -23,20 +23,24 @@
             = edit_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}/edit")
           %td
             = destroy_in_rekon("/nodes/#{@node.name}/#{@bucket.name}/#{key}")
-  
-- else
-  %p
-    This bucket doesn't technically exist.  Buckets come into existence only
-    once they have had a key stored "inside" them.
-  %p
-    Add a key to persist this bucket.
-  
-
-%form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}"}
-  %label{:for => 'new_key'} New Key
-  %input#new_key{:type => 'text', :name => 'key'}
-  %button{:type => 'submit'} Add
-  %em.hint Leave it blank to let riak pick
+    - else
+      %tr
+        %td.no-results{:colspan => 5}
+          %p
+            %p
+              This bucket doesn't technically exist.
+              %br
+              Buckets come into existence only once they have had a key stored "inside" them.
+            %p
+              Add a key to persist this bucket.
+  %tfoot
+    %tr
+      %td{:colspan => 5}
+        %form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}"}
+          %label{:for => 'new_key'} New Key
+          %input#new_key{:type => 'text', :name => 'key'}
+          %button{:type => 'submit'} Add
+          %em.hint Leave it blank to let riak choose the key
 
 %br
 %br
@@ -92,4 +96,9 @@
         %td= @props[:young_vclock]
         %td= @props[:old_vclock]
       
-%a{:href => "/nodes/#{@node.name}"} Back to #{@node.name}
+%ul#footer-navi
+  %li
+    %a{:href => "/nodes"} Nodes
+  %li
+    %a{:href => "/nodes/#{@node.name}"} Buckets
+    
