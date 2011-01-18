@@ -42,7 +42,43 @@ module Rekon
       def pending_spinner(data_function_name, data_arguments='')
         %[<img src="/images/pending.gif" alt="Pending" class="pending" data-function-name="%s" %s />] % [data_function_name, data_arguments]
       end
-            
+      
+      def content_type_options
+        %w[
+          application/json
+          application/xml
+          application/javascript
+          text/plain
+          text/html
+          text/css
+          ]
+      end
+      
+      def select_options(test, options)
+        options[:selected] = 'selected' if test == options[:value]
+        options
+      end
+      
+      def format_raw_value(robject)
+        case robject.content_type
+        when 'application/json'
+         JSON.pretty_generate(robject.data)
+        else
+          h robject.data
+        end
+      end
+      
+      def highlight(code, lang)
+        CodeRay.scan(code, lang).div
+      end
+      
+      def format_output_value(code, content_type)
+        lang = content_type.split('/').last.to_sym
+        return code if lang == 'plain'
+        
+        highlight(code, lang)
+      end
+                  
     end
   end
 end

@@ -1,3 +1,5 @@
+require 'coderay'
+
 module Rekon
   module App
     class Installer

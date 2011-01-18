@@ -132,8 +132,16 @@ module Rekon
       @node    = Rekon::Data::Nodes.find!(@host)
       @bucket  = Riak::Bucket.new(@node.client, params[:bucket])
       @robject = @bucket.get(params[:key])
-      @robject.raw_data = JSON.parse(params[:value]).to_json
+      
+      @robject.content_type = params[:content_type]
+      @robject.raw_data     = case @robject.content_type  
+      when 'application/json'
+        JSON.parse(params[:value]).to_json
+      else
+        params[:value]
+      end
       @robject.store
+      
       redirect "/nodes/#{@host}/#{@bucket.name}/#{@robject.key}"
     end
     

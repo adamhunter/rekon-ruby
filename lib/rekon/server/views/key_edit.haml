@@ -2,8 +2,14 @@
 
 %form{:method => 'post', :action => "/nodes/#{@host}/#{@bucket.name}/#{@robject.key}"}
   = method_put
+  %label{:for => 'content_type'} Content Type
+  %select#content_type{:name => 'content_type'}
+    = content_type_options.each do |option|
+      %option{select_options(@robject.content_type, :value => option)}
+        = option
+  
   %label{:for => 'edit_key'}= "<em>Key</em> #{@robject.key}"
-  %textarea{:id => 'edit_key', :name => 'value'}= JSON.pretty_generate(@robject.data)
+  ~ %Q[<textarea id="edit_key" name="value">#{format_raw_value @robject}</textarea>]
   %p
     This feature is currently experimental.
   %button Update

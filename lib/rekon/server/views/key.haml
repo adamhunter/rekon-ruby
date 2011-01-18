@@ -1,6 +1,6 @@
 %h1 Key &ndash; <em>http://#{@node.name}/riak/#{@bucket.name}/#{@robject.key}</em>
 
-%table
+%table.wide
   %tbody
     %tr
       %th Content Type
@@ -21,15 +21,12 @@
       %th Meta
       %td= h @robject.meta.inspect
 
-%h3 Content
+#key
+  - if @robject.content_type == 'application/json'
+    %pre~ format_output_value(JSON.pretty_generate(@robject.data), @robject.content_type)
 
-- if @robject.content_type == 'application/json'
-  %pre
-    = JSON.pretty_generate(@robject.data)
-    
-- else
-  %p
-    = @robject.data
+  - else
+    %pre~ format_output_value(@robject.data, @robject.content_type)
 
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}"} Back
 %a{:href => "/nodes/#{@node.name}/#{@bucket.name}/#{@robject.key}/edit"} Edit

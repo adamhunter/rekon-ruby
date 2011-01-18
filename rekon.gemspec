@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "will_paginate", "~> 2.3.15"
   s.add_dependency "yajl-ruby",     "~> 0.7.9"
   s.add_dependency "excon",         "~> 0.4.0"
+  s.add_dependency "coderay",       "~> 0.9.7"
 
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rspec",   ">= 2.4.0"

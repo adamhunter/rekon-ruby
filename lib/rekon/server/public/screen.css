@@ -31,6 +31,10 @@ table {
   margin-top:10px;
 }
 
+table.wide {
+  width:100%;
+}
+
 table th {
   font-weight:bold;
   padding:5px 10px;
@@ -58,6 +62,13 @@ body {
   font-size:0.8em;
 }
 
+#key {
+  border: 1px solid #ccc;
+  margin:15px 0;
+  padding:10px;
+  overflow-x:auto;
+}
+
 h1 {
   border-bottom: 1px dotted #999;
   font-size: 1.6em;
@@ -81,14 +92,14 @@ table tbody th {
   background:#eaeaea;
 }
 
-table tbody tr:hover th, table tbody tr:hover td {
+table:not(.CodeRay) tbody tr:hover th, table:not(.CodeRay) tbody tr:hover td {
   background:#ffd;
 }
 
 pre, code {
   font-family: 'DejaVu Sans Mono', Monaco, 'Courier New';
   line-height:1.6em;
-  font-size:0.9em;
+  font-size:12px;
 }
 
 p {

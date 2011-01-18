@@ -20,7 +20,6 @@ be entered manually.
 * editing of per bucket parameters
 * setting key content type
 * editing links between keys
-* syntax highlight json 
 * add help links to basho wiki for stats and bucket properties
 
 
