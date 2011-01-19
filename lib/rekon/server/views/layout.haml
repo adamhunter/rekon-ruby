@@ -1,16 +1,15 @@
 %html
   %head
-    %title Rekon
+    %title rekon v#{Rekon::VERSION}
     %link{:rel => 'stylesheet', :href => '/screen.css', :type => 'text/css', :media => 'screen, projection'}
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", :type => "text/javascript"}
     
   %body
     #container
       #home
-        %a{:href => '/nodes'} Rekon v#{Rekon::VERSION}
+        %a{:href => '/nodes'} rekon <code>#{Rekon::VERSION}</code>
         
       #content  
         = yield
       
-  
     %script{:type => 'text/javascript', :src => '/app.js'}
