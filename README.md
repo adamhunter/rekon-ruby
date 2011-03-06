@@ -10,6 +10,11 @@ help train people on riak in a visual style.  As it turns out, its been pretty
 useful so my goals are to test the crap out of it and continue to add
 features.
 
+**NOTICE** This gem relies on features found in the edge version of ripple
+(https://github.com/seancribbs/ripple).  You will have to clone the repo and
+`bundle install` before running `bin/rekon` to get it to work.  Once Ripple
+0.9.0 is out I'll push this live as a gem.
+
 Rekon is a data visualization utility inspired by Briak.  I have been waiting for
 basho to release a list buckets feature, which is here in 0.14. 
 [`http://127.0.0.1:8098/riak?buckets=true`](http://127.0.0.1:8098/riak?buckets=true)
