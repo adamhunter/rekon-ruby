@@ -1,6 +1,9 @@
 # Rekon
 ## Scout into your riak cluster
 
+### Demo
+Checkout http://rekonapp.com:8090/ for a demo.
+
 ### About
 Pronounced |ˈrēˌkän; riˈkän| (like recon)
 
