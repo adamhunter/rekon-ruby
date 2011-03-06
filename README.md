@@ -4,6 +4,12 @@
 ### About
 Pronounced |ˈrēˌkän; riˈkän| (like recon)
 
+**WARNING** This is alpha software, I had pretty much no idea what was going
+to come out of 48 hours of me frantically prototyping this app.  I built it to
+help train people on riak in a visual style.  As it turns out, its been pretty
+useful so my goals are to test the crap out of it and continue to add
+features.
+
 Rekon is a data visualization utility inspired by Briak.  I have been waiting for
 basho to release a list buckets feature, which is here in 0.14. 
 [`http://127.0.0.1:8098/riak?buckets=true`](http://127.0.0.1:8098/riak?buckets=true)
@@ -13,9 +19,9 @@ Nodes that do not have the ability to list their buckets will require buckets to
 be entered manually.
 
 ### To Do:
+* Put some tests in here foo
 * Get riak in memory test harness setup.
 * Test connection to primary configured riak server
-* First run install into datastore
 * add http authentication
 * editing of per bucket parameters
 * setting key content type
