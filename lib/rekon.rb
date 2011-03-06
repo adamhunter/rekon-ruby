@@ -9,3 +9,5 @@ module Rekon
   autoload :Data
   autoload :Server
 end
+
+require 'rekon/version'
